@@ -1,0 +1,58 @@
+<Method> <Api> <About>
+(hostname + Api)
+
+------
+GET /api/cards (hamma kardlarni obkeladi 6 tadan)
+    *Query (hech biri MAJBURY EMAS!)
+      -id=<number> card id (agar bitta cardni uzi kere bo'sa idsini junatasiz)
+      -limit=<number> (nechtadan kelishi)
+      -page=<number> (qaysi pageligi)
+      -search=<string> (qidirilayotgan so'z)
+      -author=<string> (hamma avtorlar) 
+      -category=<id> (sap kategoriyani id sini junatasiz) 
+      -date=<yyyy-mm-dd> (shu fromat bilan junatasiz )  
+      -status=<boolean> (online tanlasa true juantasiz bumasa false)
+
+ GET /api/categories (hamma ketigoriyalarni obkeladi sap bilan birga)
+
+ GET /api/authors (hamma avtorlarni obkeladi)
+
+ GET /api/recomendet (belgilangan kardlarni obkeladi)
+    *Query (Bu shart!)
+      -id=<number> (sap_categoriyani id sini junatasiz)
+
+GET /api/admin/confirmation (admin page ga cardni sortlab ob kelish uchun!)
+    *Headers (Bu shart!)
+      -token (biz junatgan tokenni bizga junatasiz)
+    *Query
+      -conf=<number> (status raqami { tasdiqlandi=2, bekorqilindi=0, kutilmoqda=1 })
+
+GET /api/public/<file nomi> (static file nomini junatsayiz obkeladi odatda rasm!)
+
+=========================POST=====================================
+
+POST /api/admin/login (admin login qilishi uchun)
+    *Body (Bu shart!)
+      -username=<string> (login pagedagi username)
+      -password=<string> (admin passwordi)
+
+POST /api/upload (yangi card qushish uchun!)
+    *Body (Bu shart!)
+      -fullname=<string> (avtorni to'liq ismi << ismi + familiyasi >>")
+      -phone=<string> (telefon raqami)
+      -date=<yyyy-mm-dd> (shu formatda)
+      -time=<hh:mm> (tanlangan vaqt)
+      -status=<boolean> (online busa true bumasa false)
+      -category_id=<number> (categoriyasi id si)
+      -sap_category_id=<number> (sap categoriyasini id si)
+      -location=<string> (qayerda bulishi haqidagi link yoki goole map link)
+      -title=<string> (card nomi yoki title)
+      -short_info=<string> (card haqida qisqa malumot)
+      -long_info=<string> (card haqida to'liq malumot)
+
+=====================PUT=========================
+PUT /api/admin/update (cardni holatini va ko'rishlar sonini uzgartirish uchun!)
+    *Body (Bu shart!)
+      -id=<number> (cardni id si)
+      -confirmation=<number> (1,2 yoki 3 bo'lishi kerak!)
+      -view=<boolean> (ko'rishlar sonini uzgartirish uchun true junatasiz!)  (hohlasayiz 'confirmation' va 'view' billa junating hohlasiy bittasini tanlab!)
