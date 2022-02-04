@@ -48,7 +48,7 @@ class AppModule {
                     when c.status = $7 or $7 is null then true
                     else false
                 end
-            order by c.date::timestamp desc
+            order by c.date::timestamp asc
             offset $1
             limit $2
             `,
